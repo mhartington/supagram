@@ -1,0 +1,32 @@
+{
+  "name": "svelte-cap-supabase-vite",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
+    "@tsconfig/svelte": "^2.0.1",
+    "svelte": "^3.44.0",
+    "svelte-check": "^2.2.7",
+    "svelte-preprocess": "^4.9.8",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2"
+  },
+  "dependencies": {
+    "@capacitor/android": "^3.4.0",
+    "@capacitor/camera": "^1.2.4",
+    "@capacitor/cli": "^3.4.0",
+    "@capacitor/core": "^3.4.0",
+    "@capacitor/ios": "^3.4.0",
+    "@ionic/pwa-elements": "^3.1.1",
+    "@supabase/supabase-js": "^1.30.0",
+    "bootstrap-icons": "^1.8.0",
+    "svelte-router-spa": "^6.0.3"
+  }
+}

@@ -1,0 +1,6 @@
+{
+	"appId": "com.example.app",
+	"appName": "Supagram",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}
