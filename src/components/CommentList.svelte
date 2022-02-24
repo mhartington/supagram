@@ -19,9 +19,11 @@
           }
         }
         if (payload.eventType === 'DELETE') {
+          console.log(payload)
           const newPosts = comments.filter(
             (comment) => comment.id !== payload.old.id
           );
+          console.log('comments: ', newPosts);
           comments = newPosts;
         }
       })
