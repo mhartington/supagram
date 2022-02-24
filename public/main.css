@@ -58,6 +58,11 @@ textarea {
   height: auto;
   font: inherit;
   color: inherit;
+  background: none;
+}
+textarea:focus,
+textarea:focus-visible {
+    outline: none;
 }
 textarea::placeholder {
   padding-left: 2px;
@@ -157,8 +162,11 @@ body,
 }
 main {
   margin: auto;
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
 }
@@ -175,6 +183,9 @@ input[type='submit'] {
   background: unset;
   border: unset;
   font-size: 16px;
+
+  min-width: 48px;
+  height: 48px;
 }
 
 button:hover,
@@ -185,4 +196,26 @@ input[type='submit']:hover {
 
 .content {
   overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  touch-action: manipulation;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 16px);
+  width: 100%;
+  height: 100%;
+}
+.content::before,
+.content::after {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  content: '';
+}
+
+.content::before {
+  bottom: -1px;
+}
+
+.content::after {
+  top: -1px;
 }

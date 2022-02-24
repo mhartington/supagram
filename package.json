@@ -20,13 +20,19 @@
   },
   "dependencies": {
     "@capacitor/android": "^3.4.0",
+    "@capacitor/app": "^1.1.0",
     "@capacitor/camera": "^1.2.4",
     "@capacitor/cli": "^3.4.0",
     "@capacitor/core": "^3.4.0",
     "@capacitor/ios": "^3.4.0",
+    "@capacitor/keyboard": "^1.2.2",
+    "@capacitor/splash-screen": "^1.2.1",
+    "@capacitor/status-bar": "^1.0.7",
     "@ionic/pwa-elements": "^3.1.1",
     "@supabase/supabase-js": "^1.30.0",
     "bootstrap-icons": "^1.8.0",
-    "svelte-router-spa": "^6.0.3"
+    "svelte-router-spa": "^6.0.3",
+    "svelte-routing": "^1.6.0",
+    "svelte-spa-router": "^3.2.0"
   }
 }

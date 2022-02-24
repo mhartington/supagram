@@ -1,42 +1,48 @@
 <script lang="ts">
   import { onDestroy, onMount } from 'svelte';
   import Post from '../components/Post.svelte';
-  import { navigateTo } from 'svelte-router-spa';
+  import { navigate } from 'svelte-routing';
   import Header from '../components/Header.svelte';
-  import { DB_NAME, logOut, supabase } from '../supabaseClient';
-import type { RealtimeSubscription } from '@supabase/supabase-js';
+  import { logOut, supabase } from '../supabaseClient';
+  import type { RealtimeSubscription } from '@supabase/supabase-js';
   let changesSub: RealtimeSubscription;
   let posts = [];
+
   onDestroy(() => {
     changesSub.unsubscribe();
   });
+
   onMount(() => {
     loadPosts();
     changesSub = supabase
-      .from('*')
+      .from('supagram')
       .on('*', (payload) => {
-        console.log('Change received!', payload);
-        if(payload.eventType === 'INSERT'){
-            posts = [payload.new, ...posts];
+        if (payload.eventType === 'INSERT') {
+          posts = [payload.new, ...posts];
         }
-        if(payload.eventType === 'DELETE'){
-            posts = posts.filter(post => post.id !== payload.old.id);
+        if (payload.eventType === 'DELETE') {
+          const newPosts = posts.filter((post) => post.id !== payload.old.id);
+          posts = newPosts;
         }
       })
       .subscribe();
   });
 
   const logout = async () => await logOut();
+
   const loadPosts = async () => {
-    const query = await supabase.from(DB_NAME).select('*');
-    posts = query.data.reverse();
+    const { data } = await supabase
+      .from('supagram')
+      .select('*')
+      .order('created_at', { ascending: false });
+    posts = data;
   };
 </script>
 
 <main>
   <Header>
     <div slot="buttons">
-      <button on:click={() => navigateTo('new')}>
+      <button on:click={() => navigate('/new')}>
         <i class="bi bi-plus-square" />
       </button>
       <button on:click={logout}>
@@ -45,8 +51,19 @@ import type { RealtimeSubscription } from '@supabase/supabase-js';
     </div>
   </Header>
   <div class="content">
-    {#each posts as post}
-      <Post img={post.img} caption={post.caption} />
-    {/each}
+    <div class="post-container">
+      {#each posts as post (post.id)}
+        <Post {post} />
+      {/each}
+    </div>
   </div>
 </main>
+
+<style>
+  @media (min-width: 600px) {
+    .post-container {
+      max-width: 500px;
+      margin: auto;
+    }
+  }
+</style>
