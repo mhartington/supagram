@@ -6,11 +6,12 @@
 </header>
 
 <style>
+
   header {
     position: sticky;
     top: 0;
     width: 100%;
-    background-color: Canvas;
+    background-color: var(--bg);
   }
   header .header-inner {
     display: flex;
