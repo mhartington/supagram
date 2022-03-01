@@ -29,7 +29,6 @@
     "@capacitor/keyboard": "^1.2.2",
     "@capacitor/splash-screen": "^1.2.1",
     "@capacitor/status-bar": "^1.0.7",
-    "@ionic/pwa-elements": "^3.1.1",
     "@supabase/supabase-js": "^1.30.0",
     "bootstrap-icons": "^1.8.0",
     "svelte-router-spa": "^6.0.3",
