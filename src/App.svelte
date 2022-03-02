@@ -10,7 +10,7 @@ import { onMount } from 'svelte';
   const currentUser = supabase.auth.user();
   user.set(currentUser);
   onMount(()=>{
-    Keyboard.setResizeMode({mode: KeyboardResize.Body})
+    // Keyboard.setResizeMode({mode: KeyboardResize.Body})
   })
   supabase.auth.onAuthStateChange((_event, session) => {
     user.set(session?.user ?? null);

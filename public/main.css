@@ -3,8 +3,8 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-  --blue: #3880ff;
-  --light-blue: #4c8dff;
+  --blue: #37bd7d;
+  --light-blue: #51d499;
   --bg: #fff;
   --text: #000;
 }
@@ -13,6 +13,7 @@
   :root {
     --bg: #000;
     --text: #fff;
+    --blue: #3ECF8E;
   }
 }
 
@@ -20,7 +21,7 @@
    don't handle system dark mode for you automatically
    (Firefox), handle it for them. */
 @supports not (color-scheme: light dark) {
-  html {
+  :root {
     background: var(--bg);
     color: var(--text);
   }
@@ -28,9 +29,8 @@
 
 /* For browsers that support automatic dark/light mode
    As well as system colors, set those */
-@supports (color-scheme: light dark)
-  and (background-color: Canvas)
-  and (color: CanvasText) {
+@supports (color-scheme: light dark) and (background-color: Canvas) and
+  (color: CanvasText) {
   :root {
     --bg: Canvas;
     --text: CanvasText;
@@ -38,14 +38,12 @@
 }
 
 /* For Safari on iOS. Hacky, but it works. */
-@supports (background-color: -apple-system-control-background)
-  and (color: text) {
+@supports (background-color: -apple-system-control-background) and (color: text) {
   :root {
     --bg: -apple-system-control-background;
     --text: text;
   }
 }
-
 
 * {
   box-sizing: border-box;
@@ -104,7 +102,7 @@ textarea {
 }
 textarea:focus,
 textarea:focus-visible {
-    outline: none;
+  outline: none;
 }
 textarea::placeholder {
   padding-left: 2px;

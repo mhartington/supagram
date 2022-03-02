@@ -26,6 +26,7 @@
     font-weight: 900;
     font-family: monospace;
     font-size: 24px;
+    color: var(--blue);
   }
 
   header :global(.buttons) {
